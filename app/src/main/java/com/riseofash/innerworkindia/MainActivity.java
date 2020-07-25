@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     IntroViewPageAdapter introViewPageAdapter;
     List<ScreenItem> mList;
     int position=0;
-    Button next,prev,skip;
+    Button next,prev,skip,getstarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         prev=findViewById(R.id.prev);
         skip=findViewById(R.id.skip);
+        getstarted=findViewById(R.id.getstarted);
 
         tabLayout=findViewById(R.id.tablayout);
         viewPager=findViewById(R.id.viewPager);
@@ -55,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
                 position=viewPager.getCurrentItem();
                 if(position<mList.size()){
                     position++;
-                    if(position<8){
+                    if(position<7){
+                        prev.setVisibility(View.VISIBLE);
                         viewPager.setCurrentItem(position);
                     }
                     else{
-                        startActivity(new Intent(MainActivity.this,HomePage.class));
+                        prev.setVisibility(View.VISIBLE);
+                        getstarted.setVisibility(View.VISIBLE);
+                        next.setVisibility(View.INVISIBLE);
                     }
+
                 }
             }
         });
@@ -68,9 +73,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 position=viewPager.getCurrentItem();
+                position--;
                 if(position<8){
-                    position--;
+                    prev.setVisibility(View.VISIBLE);
+                    getstarted.setVisibility(View.INVISIBLE);
+                    next.setVisibility(View.VISIBLE);
                     viewPager.setCurrentItem(position);
+                }
+                else{
+                    prev.setVisibility(View.VISIBLE);
+                    getstarted.setVisibility(View.INVISIBLE);
+                    next.setVisibility(View.VISIBLE);
+                    viewPager.setCurrentItem(position);
+                }
+                if(position==0){
+                    prev.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -80,7 +97,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,HomePage.class));
             }
         });
-
+        getstarted.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this,HomePage.class));
+            }
+        });
 
     }
 

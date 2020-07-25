@@ -19,6 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/getstarted"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gradient_stop_color"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager"
+        app:layout_constraintEnd_toEndOf="@id/viewPager"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Get Started" />
     <Button
         android:id="@+id/next"
         android:layout_width="50dp"
@@ -30,6 +44,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/prev"
         android:layout_width="50dp"
         android:layout_height="50dp"
